@@ -1,0 +1,38 @@
+.signUpContainer{
+width: 100%;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.loginContainer {
+    background-color: #F5F5F5;
+    padding: 0;
+  }
+  .loginContainer .row {
+    margin: 0;
+    padding: 0;
+  }
+  .loginContainer .row .col-6 {
+    margin: 0;
+    padding: 0;
+  }
+  .loginContainer .loginContent {
+    height: 100vh;
+    position: relative;
+  }
+  .loginContainer .c-c-link a {
+    color: #797979;
+  }
+  .loginContainer .c-c-link a:hover {
+    color: #62ade8;
+  }
+
+ .input-field-container{
+    margin-bottom: .5rem;
+ }
+
+ .mt-5{
+    margin-top: 1rem !important;
+ }
