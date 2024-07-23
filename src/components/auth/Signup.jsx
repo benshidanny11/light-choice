@@ -16,6 +16,7 @@ import { ContentHead } from '../shared/Contents';
 import { signUp } from '../../api';
 import Alert from '../shared/Alert';
 import FormTextInput from '../shared/FormTextInput';
+import SignUpSuccessfull from './SignUpSuccessfull';
 // import useAuth from '../../hooks/useAuth';
 
 function SignUp({ alert: defaultAlert }) {
@@ -36,10 +37,22 @@ function SignUp({ alert: defaultAlert }) {
   // eslint-disable-next-line no-restricted-globals
   const from = location?.state?.from?.pathname || '/';
   const form = useRef();
-  const canContinue = !!(!emailErrors && !passwordErrors && email && password );
+  const canContinue = !!(!emailErrors && !passwordErrors && email && password);
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
+    // const { error } = Validate('signup', { email: e.target.value });
+    // setEmailErrors(error ? error.details : undefined);
+  };
+
+  const handlePhoneChange = e => {
+    setPhoneNumber(e.target.value);
+    // const { error } = Validate('signup', { email: e.target.value });
+    // setEmailErrors(error ? error.details : undefined);
+  };
+
+  const handleNameChange = e => {
+    setName(e.target.value);
     // const { error } = Validate('signup', { email: e.target.value });
     // setEmailErrors(error ? error.details : undefined);
   };
@@ -48,7 +61,7 @@ function SignUp({ alert: defaultAlert }) {
     // const { error } = Validate('signup', { password: e.target.value });
     // setPasswordErrors(error ? error.details : undefined);
   };
-  
+
   const ValidateInputs = () => {
     handleEmailChange({ target: { value: email } });
     handlePasswordChange({ target: { value: password } });
@@ -60,9 +73,9 @@ function SignUp({ alert: defaultAlert }) {
     setAlert(data || defaultAlert);
     setShowAlert(true);
   };
-  // const handleSignupSuccess = () => {
-  //   setSignupSuccess(true);
-  // };
+  const handleSignupSuccess = () => {
+    setSignupSuccess(true);
+  };
   // const handleGoogleLoginSuccess = response => {
   //   setEmailErrors(undefined);
   //   setPasswordErrors(undefined);
@@ -70,11 +83,15 @@ function SignUp({ alert: defaultAlert }) {
   //   navigate(from, { replace: true });
   // };
   const handleSignUp = e => {
+    console.log(canContinue)
     e.preventDefault();
     if (status !== 'pending') {
+
       if (!canContinue) {
+       
         ValidateInputs();
       } else {
+        console.log('Hello there')
         /*
         
         {
@@ -86,28 +103,35 @@ function SignUp({ alert: defaultAlert }) {
 }
         */
         setStatus('pending');
-        const data = { email, firstname:name,lastname:name,phone:phonenumber , password };
+        const data = { email, firstname: name, lastname: name, phone: phonenumber, password };
         signUp(data, (err, data) => {
+          console.log(data);
           if (err) {
+            console.log(err)
             setStatus('fail');
             const resScode = err?.response?.status;
             if (resScode === 400 || resScode === 409) {
-              setEmailErrors(err?.response.data && [{ ...err.response.data.error.email }]);
-              setPasswordErrors(err?.response.data && [{ ...err.response.data.error.password }]);
+              handleShowAlert({ type: 'err', message: 'Something went wrong. please try again latter' });
             } else {
+              console.log(resScode)
               handleShowAlert({ type: 'err', message: 'Something went wrong. please try again latter' });
             }
           } else {
-           alert('')
+            if(data.responsecode===1){
+              handleSignupSuccess();
+            }else{
+              handleShowAlert({ type: 'err', message: data.responsemessage });
+            }
+            
           }
         });
       }
     }
   };
 
-  // if (signupSuccess) {
-  //   return (<VerificationSent email={email} />);
-  // }
+  if (signupSuccess) {
+    return (<SignUpSuccessfull />);
+  }
 
   return (
     <div className="loginContainer signUpContainer ">
@@ -121,14 +145,14 @@ function SignUp({ alert: defaultAlert }) {
               <div className="c-content-fields w-auto">
                 <h6>Sign Up 🤞</h6>
                 <form
-                  // onSubmit={handleSignUp}
+                  onSubmit={handleSignUp}
                   className="needs-validation mt-5"
                   ref={form}
                 >
 
                   <div className="input-field-container">
                     <FormTextInput
-                      // handleOnChange={handleEmailChange}
+                      onChange={handleNameChange}
                       value={name}
                       labeled
                       placeholder={'John Doe'}
@@ -138,7 +162,7 @@ function SignUp({ alert: defaultAlert }) {
 
                   <div className="input-field-container">
                     <FormTextInput
-                      // handleOnChange={handleEmailChange}
+                      onChange={handlePhoneChange}
                       value={phonenumber}
                       labeled
                       placeholder={'+250XXXXXXXXX'}
@@ -148,7 +172,7 @@ function SignUp({ alert: defaultAlert }) {
 
                   <div className="input-field-container">
                     <Email
-                      // handleOnChange={handleEmailChange}
+                      handleOnChange={handleEmailChange}
                       value={email}
                       errors={emailErrors}
                       labeled
@@ -156,7 +180,7 @@ function SignUp({ alert: defaultAlert }) {
                   </div>
                   <div className="input-field-container">
                     <Password
-                      // handleOnChange={handlePasswordChange}
+                      handleOnChange={handlePasswordChange}
                       value={password}
                       errors={passwordErrors}
                     />

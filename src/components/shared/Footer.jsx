@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/logo.png';
 
 function Footer() {
   return (
@@ -15,7 +15,7 @@ function Footer() {
                   <div className="logo-container">
                     <img src={logo} alt="Hello" width="30" height="30" />
                     {' '}
-                    <span>Dotpharma</span>
+                    <span>Light Choice</span>
                   </div>
                 </div>
               </div>
@@ -28,7 +28,7 @@ function Footer() {
                       {' '}
                       {new Date().getFullYear()}
                       {' '}
-                      <a href="#" target="_blank" rel="nofollow noopener noreferrer">Dotpharma</a>
+                      <a href="#" target="_blank" rel="nofollow noopener noreferrer">LightCHoice</a>
                       , All Rights Reserved
                     </p>
                   </div>

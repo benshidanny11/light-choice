@@ -2,7 +2,12 @@
 /* eslint-disable import/prefer-default-export */
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  "email":"benshidanny11@gmail.com",
+  "firstname":"dann",
+  "lastname":"Benshi",
+  "phone":"0783987123"
+ };
 
 export const userSlice = createSlice({
   name: 'user',

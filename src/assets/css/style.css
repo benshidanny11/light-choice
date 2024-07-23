@@ -652,6 +652,10 @@ input {
   pointer-events: none;
 }
 
+.app-logo-mt-5 {
+  margin-top: 5rem;
+} 
+
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -2573,10 +2577,7 @@ input, textarea{
   width: 200px;
 }
 
-/* input:-internal-autofill-selected {
-  appearance: menulist-button;
-  background-image: none !important;
-  background-color: red !important;
-  color: fieldtext !important;
-} */
+.logo-container {
+  color: #fff;
+}
 

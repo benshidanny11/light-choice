@@ -4,13 +4,13 @@ import { logo, logoWhite } from '../../assets';
 
 function Logo({ width, height, white }) {
   return (
-    <img src={white ? logoWhite : logo} style={{ width, height }} className="app-logo" alt="logo" />
+    <img src={white ? logoWhite : logo} style={{ width, height }} className="app-logo app-logo-mt-5" alt="logo" />
   );
 }
 
 Logo.defaultProps = {
-  with: 60,
-  height: 60,
+  with: 100,
+  height: 100,
 };
 
 export default Logo;

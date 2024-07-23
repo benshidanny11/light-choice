@@ -27,7 +27,7 @@ function Text() {
 }
 
 function Email({
-  value, label, handleOnChange, errors, labeled,
+  value, label, handleOnChange, errors, labeled,placeholder
 }) {
   return (
     <div className={`col-12 py-1 has-validation input-text-content w-auto ${errors && 'error'}`}>
@@ -42,7 +42,7 @@ function Email({
           type="email"
           name="email"
           onChange={handleOnChange}
-          placeholder="example@gmail.com"
+          placeholder={placeholder ? `${placeholder}`:'example@gmail.com'}
           required
           style={{backgroundColor: "red"}}
         />

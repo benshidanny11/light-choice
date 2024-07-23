@@ -1,13 +1,11 @@
 .signUpContainer{
 width: 100%;
-height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
 }
 
 .loginContainer {
-    background-color: #F5F5F5;
     padding: 0;
   }
   .loginContainer .row {
