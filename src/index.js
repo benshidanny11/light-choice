@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import './assets/css/style.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';

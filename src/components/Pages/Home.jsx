@@ -10,29 +10,29 @@ import { getMyProfile } from '../../app/features/user';
 import Alert from '../shared/Alert';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import Footer from '../shared/Footer';
+import SliderHome from '../slider/SliderHome';
+import ProductsShort from '../products/ProductShort';
 
 function Home({ alert: defaultAlert }) {
   const dispatch = useDispatch();
-  const axios = useAxiosPrivate();
-  const [alert, setAlert] = useState(defaultAlert);
-  const [showAlert, setShowAlert] = useState(true);
+  // const axios = useAxiosPrivate();
+  // const [alert, setAlert] = useState(defaultAlert);
+  // const [showAlert, setShowAlert] = useState(true);
 
   const profile = useSelector(state => state?.user?.MyProfile, shallowEqual);
 
-  const handleCloseAlert = () => {
-    setShowAlert(false);
-  };
+  // const handleCloseAlert = () => {
+  //   setShowAlert(false);
+  // };
 
-  // useEffect(() => {
-  //   getMyProfile(dispatch, axios);
-  // }, []);
   return (
     <div className="">
       <ToastContainer />
       {/* {(showAlert && alert) && (<Alert info={alert} handleCloseAlert={handleCloseAlert} />)} */}
       <div id="qodef-page-wrapper" className="">
         <Header profile={profile} />
-        <Outlet />
+        <SliderHome />
+        <ProductsShort />
         <Footer />
       </div>
     </div>

@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 /* eslint-disable import/prefer-default-export */
-export const sortMedines = (med1, med2) => {
-  if (med1.m_name < med2.m_name) {
+export const sortProducts = (prod1, prod2) => {
+  if (prod1.pname < prod2.pname) {
     return -1;
   }
-  if (med1.m_name > med2.m_name) {
+  if (prod1.pname > prod2.pname) {
     return 1;
   }
   return 0;

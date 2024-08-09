@@ -1,9 +1,7 @@
 /* eslint-disable no-lone-blocks */
 import React, { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import key from 'uniqid';
-import { useDispatch, useSelector } from 'react-redux';
-
+import key from 'uniqid'
  import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Layout from './layouts/Layout';
@@ -13,9 +11,6 @@ import Home from './Pages/Home';
 
 
 function App() {
- // const user = useSelector(state => state?.user?.MyProfile);
-  const dispatch = useDispatch();
-  // Load health tips
 
   return (
     <Routes>
