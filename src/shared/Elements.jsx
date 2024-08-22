@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { googleIcon } from "../assets";
 
 function ToolBarTDP({ link, icon, title, subtitle, count }) {
-  console.log("Count", count);
+  //console.log("Count", count);
   return (
     <div className="toolbar-links d-flex justify-content-center align-items-center">
       <div>

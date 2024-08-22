@@ -64,8 +64,8 @@ function Login() {
                       value={email}
                       errors={emailErrors}
                       labeled
-                      placeholder={"Email or phone"}
-                      label={"User name"}
+                      placeholder={"EnterbEmail"}
+                      label={"Email"}
                     />
                   </div>
                   <div className="input-field-container">

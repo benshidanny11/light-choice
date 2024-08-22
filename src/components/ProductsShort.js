@@ -3,6 +3,7 @@ import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { ProductPlaceholder } from "../shared/Placeholder";
 import ProductItem from "../shared/ProductItem";
+import Pagination from "../shared/Pagination";
 import { getProducts } from "../redux/thunk/products";
 import { setShowOrder } from "../redux/slice/products";
 import OrderModal, { PaymentStatus } from "./Order";
@@ -11,10 +12,12 @@ export default function ProductsShort() {
   const products = useSelector((state) => state.products).list;
   const order = useSelector((state) => state.products);
   const auth = useSelector((state) => state.auth);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getProducts({ page: 1, limit: 10 }));
-  }, [dispatch]);
+    dispatch(getProducts({ page, limit: 20 }));
+  }, [page]);
   useEffect(() => {
     if (order.orderMode && auth.isAuthenticated)
       dispatch(setShowOrder(order.orderMode));
@@ -33,11 +36,11 @@ export default function ProductsShort() {
               </div>
             ))}
           </div>
-          {/* <Pagination
-            handlePageClick={handlePageClick}
-            totalRows={medicineCont?.count || 1}
-            itemsPerPage={itemsPerPage}
-          /> */}
+          <Pagination
+                handlePageClick={(e) => setPage(Number(e.selected) + 1)}
+                totalRows={order?.count}
+                itemsPerPage={20}
+              />
         </div>
       </div>
       <OrderModal />

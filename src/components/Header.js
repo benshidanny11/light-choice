@@ -83,7 +83,6 @@ export function HeaderContent() {
                           />
                         </span>
                         <span className="qodef-login-text-holder">
-                         
                           <span className="qodef-login-opener-text">
                             {profile.email?.slice(
                               0,
@@ -96,7 +95,16 @@ export function HeaderContent() {
                         <Dropdown.Item onClick={() => dispatch(logoutUser())}>
                           Logout
                         </Dropdown.Item>
-                        {/* <Dropdown.Item href="#/">My profile</Dropdown.Item> */}
+                        {JSON.parse(user).role === "PATIENT" && (
+                          <Dropdown.Item onClick={() => navigate("/orders")}>
+                            My orders
+                          </Dropdown.Item>
+                        )}
+                        {JSON.parse(user).role === "ADMIN" && (
+                          <Dropdown.Item onClick={() => navigate("/home")}>
+                            Dashboard
+                          </Dropdown.Item>
+                        )}
                       </Dropdown.Menu>
                     </Dropdown>
                   ) : (

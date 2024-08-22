@@ -1,12 +1,14 @@
 import axios from "axios";
 import { callApi } from "../helper";
 import {
+  setCount,
   setOrderSuccess,
   setPaymentRes,
   setPaymentStatus,
   setProducts,
   setShowOrder,
 } from "../slice/products";
+import { setSuccess } from "../slice/global";
 
 export const getProducts =
   ({ page, limit }) =>
@@ -16,7 +18,10 @@ export const getProducts =
       dispatch,
       method: "get",
     });
-    if (res) dispatch(setProducts(res.products));
+    if (res) {
+      dispatch(setProducts(res.products));
+      dispatch(setCount(res.count));
+    }
   };
 
 export const orderProduct = (data) => async (dispatch) => {
@@ -28,6 +33,27 @@ export const orderProduct = (data) => async (dispatch) => {
   });
 
   if (res) dispatch(setOrderSuccess(res));
+};
+export const addProduct = (data) => async (dispatch) => {
+  const res = await callApi({
+    url: "/product/createnew",
+    body: data,
+    token: localStorage.getItem("token"),
+    dispatch,
+  });
+
+  if (res) dispatch(getProducts({ page: 1, limit: 10 }));
+};
+export const updateProduct = (data, id) => async (dispatch) => {
+  const res = await callApi({
+    url: `/product/updateproduct/${id}`,
+    body: data,
+    method: "put",
+    token: localStorage.getItem("token"),
+    dispatch,
+  });
+
+  if (res) dispatch(getProducts({ page: 1, limit: 10 }));
 };
 export const createPayment = (data) => async (dispatch) => {
   const res = await callApi({
@@ -66,8 +92,18 @@ export const verifyPayment = (data) => async (dispatch) => {
     dispatch,
   });
   if (res) {
-    console.log(res, "verify response");
+    //console.log(res, "verify response");
 
     dispatch(setPaymentStatus(res.paymentStatus));
   }
+};
+
+export const deleteProduct = (id) => async (dispatch) => {
+  const res = await callApi({
+    url: `/product/deleteproduct/${id}`,
+    dispatch,
+    method: "delete",
+    token: localStorage.getItem("token"),
+  });
+  if (res) dispatch(getProducts({ page: 1, limit: 10 }));
 };

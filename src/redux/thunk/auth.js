@@ -8,7 +8,8 @@ export const login = (data, navigate) => async (dispatch) => {
     localStorage.setItem("user", JSON.stringify(res.userData));
     localStorage.setItem("token", res.accesstoken);
     dispatch(loginUser(res));
-    navigate("/");
+    if (res.userData.role === "ADMIN") navigate("/home");
+    else navigate("/");
   }
 };
 

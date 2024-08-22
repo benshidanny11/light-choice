@@ -85,12 +85,13 @@ const OrderModal = () => {
                   type="number"
                   onChange={(e) => {
                     validate(e);
-                    setQuantity(Number(e.target.value));
+                    e.target.value && setQuantity(Number(e.target.value));
                   }}
                   placeholder="Quantity"
                   required
                   style={{ backgroundColor: "red" }}
                   value={quantity}
+                  min={1}
                 />
               </div>
               <div className="field">

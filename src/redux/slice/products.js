@@ -8,10 +8,18 @@ const productSlice = createSlice({
     orderSuccess: false,
     paymentStatus: "",
     paymentRes: null,
+    orders: [],
+    count: 1,
   },
   reducers: {
     setProducts: (state, action) => {
       state.list = action.payload;
+    },
+    setCount: (state, action) => {
+      state.count = action.payload;
+    },
+    setOrders: (state, action) => {
+      state.orders = action.payload;
     },
     setShowOrder: (state, action) => {
       state.ShowOrder = action.payload;
@@ -44,6 +52,8 @@ export const {
   setPaymentStatus,
   setPaymentRes,
   clearOrder,
+  setOrders,
+  setCount,
 } = productSlice.actions;
 
 export default productSlice.reducer;

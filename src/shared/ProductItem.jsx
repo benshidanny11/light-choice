@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setOrderMode, setShowOrder } from "../redux/slice/products";
 
 export default function ProductItem({ productDetails }) {
-  const { pid, pprice, pname, pimgage } = productDetails;
+  
+  const { pid, pprice, pname, pimage } = productDetails;
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export default function ProductItem({ productDetails }) {
           <FloatingButton link="/" text="-2%" icon="bi bi-bag" />
         </div>
         )} */}
-        <img src={pimgage} alt="item" />
+        <img src={pimage} alt="item" />
       </div>
       <div className="down p-2">
         <div className="p-1">

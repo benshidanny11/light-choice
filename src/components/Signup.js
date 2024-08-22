@@ -10,6 +10,10 @@ import FormTextInput from "../shared/FormTextInput";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../redux/thunk/auth";
 import { setError } from "../redux/slice/global";
+const countryCode = (number) => {
+  if (!number.startsWith("+25")) return "+25" + number;
+  return number;
+};
 function SignUp() {
   const [name, setName] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
@@ -38,7 +42,7 @@ function SignUp() {
       email,
       firstname: name,
       lastname: name,
-      phone: phonenumber,
+      phone: countryCode(phonenumber),
       password,
     };
     dispatch(signup(data, navigate));
