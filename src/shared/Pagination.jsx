@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ReactPaginate from 'react-paginate';
+import './../assets/css/pagination.css';
 
 function Pagination({ handlePageClick, totalRows, itemsPerPage }) {
   const pageCount = Math.ceil(totalRows / itemsPerPage);
@@ -18,7 +19,7 @@ function Pagination({ handlePageClick, totalRows, itemsPerPage }) {
       pageClassName="page-num"
       previousClassName="page-num"
       nextClassName="page-num"
-      activeClassName="active"
+      activeClassName="active-c"
     />
   );
 }

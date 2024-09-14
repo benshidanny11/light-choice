@@ -30,7 +30,7 @@ function Email({
       )}
       <div className="field">
         <input
-          className={`input-field`}
+          className={`input-field p-input-left`}
           type="email"
           name="email"
           onChange={handleOnChange}

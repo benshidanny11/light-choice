@@ -16,7 +16,7 @@ export default function FormTextInput({
           type={type}
           onChange={onChange}
           placeholder={placeholder}
-          className="input-control"
+          className="input-control p-input-left"
           value={value}
           required
         />

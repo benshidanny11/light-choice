@@ -80,7 +80,7 @@ function ItemFotter({ center, medicine }) {
         center && "justify-content-center align-items-center"
       }`}
     >
-      <div className="d-flex footer-child">
+      {/* <div className="d-flex footer-child">
         <a
           href={`https://wa.me/250790696369?text=Hello at Dotpharma, I would like to order the product: ${medicine}`}
           className="button link-orde-on-whatsap"
@@ -89,7 +89,7 @@ function ItemFotter({ center, medicine }) {
         >
           <i className="fa-brands fa-whatsapp" /> Order on whatsapp
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }

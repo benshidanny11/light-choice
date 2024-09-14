@@ -84,7 +84,7 @@ export const Orders = ({ orders, isAdmin,handlePagination }) => {
               {orders?.map((order, i) => {
                 return (
                   <tr key={i}>
-                    <td className="crancy-table__column-3 crancy-table__data-3">
+                    <td className="">
                       <p className="crancy-table__text crancy-table__time">
                         {new Date(order.createdAt).toLocaleString("en-GB")}
                       </p>

@@ -1,12 +1,20 @@
 import React, { useEffect, Suspense, useState } from "react";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
+import './../assets/css/product.css'
 import { ProductPlaceholder } from "../shared/Placeholder";
 import ProductItem from "../shared/ProductItem";
 import Pagination from "../shared/Pagination";
 import { getProducts } from "../redux/thunk/products";
 import { setShowOrder } from "../redux/slice/products";
 import OrderModal, { PaymentStatus } from "./Order";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckSquare,
+  faQuestionCircle,
+  faTimesCircle,
+  faSearch
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function ProductsShort() {
   const products = useSelector((state) => state.products).list;
@@ -24,7 +32,18 @@ export default function ProductsShort() {
   }, [auth.isAuthenticated]);
 
   return (
-    <div className="product-lis">
+    // className="product-lis"
+    // 
+    <div className="product-list" >
+      <div class="qodef-search-form-inner clear d-flex">
+        <input type="search" id="qodef-search-form-66e3f486e008c" class="qodef-search-form-field search-input-text" readOnly name="s" placeholder="Search" />
+        <button type="submit" class="qodef-search-form-button ">
+          <FontAwesomeIcon
+            icon={faSearch}
+            // className="mx-2"
+          />
+        </button>
+      </div>
       <div className="d-flex flex-column">
         <div className="px-1">
           <div className="item-list d-flex col-12 flex-wrap">
@@ -36,15 +55,19 @@ export default function ProductsShort() {
               </div>
             ))}
           </div>
-          <Pagination
-                handlePageClick={(e) => setPage(Number(e.selected) + 1)}
-                totalRows={order?.count}
-                itemsPerPage={20}
-              />
+          <div className="pagination-container">
+            <Pagination
+              handlePageClick={(e) => setPage(Number(e.selected) + 1)}
+              totalRows={order?.count}
+              itemsPerPage={20}
+            />
+          </div>
+
         </div>
       </div>
       <OrderModal />
       <PaymentStatus />
+      
     </div>
   );
 }
