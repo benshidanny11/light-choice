@@ -29,7 +29,7 @@ export default function ProductItem({ productDetails }) {
       <div className="down p-2">
         <div className="p-1">
           <h5 className="text-center">
-            <Link to={`/product/${pid}`} className="text-center product-name">
+            <Link to={`/home/products/${pid}?origin=home`} className="text-center product-name">
               {pname}
             </Link>
           </h5>
@@ -52,7 +52,7 @@ export default function ProductItem({ productDetails }) {
           />
         </div>
         <div className="py-1 d-flex justify-content-center align-items-center">
-          <ItemFotter medicine={pid} />
+          <ItemFotter product={pname} />
         </div>
       </div>
     </div>

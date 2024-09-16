@@ -7,10 +7,25 @@ import {
   setPaymentStatus,
   setProducts,
   setShowOrder,
+  setFiliteredProducts
 } from "../slice/products";
 import { setSuccess } from "../slice/global";
 
-export const getProducts =
+export const getFilteredProducts =
+  ({ query }) =>
+  async (dispatch) => {
+    const res = await callApi({
+      url: `/product/filterproduct?prodquery=${query}`,
+      dispatch,
+      method: "get",
+    });
+    if (res) {
+      dispatch(setFiliteredProducts(res.products));
+    //  dispatch(setCount(res.count));
+    }
+  };
+
+  export const getProducts =
   ({ page, limit }) =>
   async (dispatch) => {
     const res = await callApi({

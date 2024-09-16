@@ -73,23 +73,23 @@ function Price({ discount, price, center }) {
   );
 }
 
-function ItemFotter({ center, medicine }) {
+function ItemFotter({ center, product }) {
   return (
     <div
       className={`d-flex  item-fotter ${
         center && "justify-content-center align-items-center"
       }`}
     >
-      {/* <div className="d-flex footer-child">
+      <div className="d-flex footer-child">
         <a
-          href={`https://wa.me/250790696369?text=Hello at Dotpharma, I would like to order the product: ${medicine}`}
+          href={`https://wa.me/250790696369?text=Hello at Dotpharma, I would like to order the product: ${product}`}
           className="button link-orde-on-whatsap"
           target="_blank"
           rel="noreferrer"
         >
           <i className="fa-brands fa-whatsapp" /> Order on whatsapp
         </a>
-      </div> */}
+      </div>
     </div>
   );
 }

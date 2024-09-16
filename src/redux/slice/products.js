@@ -3,6 +3,7 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     list: [],
+    filteredList: [],
     orderMode: false,
     ShowOrder: false,
     orderSuccess: false,
@@ -14,6 +15,9 @@ const productSlice = createSlice({
   reducers: {
     setProducts: (state, action) => {
       state.list = action.payload;
+    },
+    setFiliteredProducts: (state, action) => {
+      state.filteredList = action.payload;
     },
     setCount: (state, action) => {
       state.count = action.payload;
@@ -41,6 +45,9 @@ const productSlice = createSlice({
       state.paymentStatus = "";
       state.orderSuccess = false;
     },
+    clearFilter:(state)=>{
+      state.filteredList=[];
+    }
   },
 });
 
@@ -54,6 +61,8 @@ export const {
   clearOrder,
   setOrders,
   setCount,
+  setFiliteredProducts,
+  clearFilter
 } = productSlice.actions;
 
 export default productSlice.reducer;

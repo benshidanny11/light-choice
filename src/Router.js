@@ -8,6 +8,8 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PatientOrders from "./components/PatientOrder";
 import Product from "./components/admin/Product";
+import ViewProduct from "./components/ViewProduct";
+import ViewProductHome from "./components/ViewProductHome";
 const ProtectedRoute = ({ element }) => {
   const isAuthenticated = useSelector((state) => state?.auth?.isAuthenticated); 
   return isAuthenticated ? element : <Navigate to="/" replace />;
@@ -28,6 +30,16 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  ,
+  {
+    path: "/home/products/:pid",
+    element: <ViewProductHome />,
+  },
+  ,
+  {
+    path: "/filter/products/:pid",
+    element: <ViewProduct />,
   },
   {
     path: "/home",

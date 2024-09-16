@@ -15,11 +15,13 @@ import {
   faTimesCircle,
   faSearch
 } from "@fortawesome/free-solid-svg-icons";
+import FilterProductModal from "./modals/FilterProductModal";
 
 export default function ProductsShort() {
   const products = useSelector((state) => state.products).list;
   const order = useSelector((state) => state.products);
   const auth = useSelector((state) => state.auth);
+  const [showFilterModal, setShowFilterModal] = useState(false);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -35,12 +37,15 @@ export default function ProductsShort() {
     // className="product-lis"
     // 
     <div className="product-list" >
-      <div class="qodef-search-form-inner clear d-flex">
+      <div class="qodef-search-form-inner clear d-flex" onClick={() => {
+        console.log("Hello")
+          setShowFilterModal(true) 
+         }}>
         <input type="search" id="qodef-search-form-66e3f486e008c" class="qodef-search-form-field search-input-text" readOnly name="s" placeholder="Search" />
         <button type="submit" class="qodef-search-form-button ">
           <FontAwesomeIcon
             icon={faSearch}
-            // className="mx-2"
+          // className="mx-2"
           />
         </button>
       </div>
@@ -67,7 +72,10 @@ export default function ProductsShort() {
       </div>
       <OrderModal />
       <PaymentStatus />
-      
+      <FilterProductModal
+        show={showFilterModal}
+        onHide={() => setShowFilterModal(false)}
+      />
     </div>
   );
 }
